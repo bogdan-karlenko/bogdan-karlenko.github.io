@@ -1,7 +1,35 @@
 <!DOCTYPE html>
 <html>
-<body>
-<h1>Hello World</h1>
-<p>Hello World!</p>
-</body>
+ <head>
+  <meta charset="utf-8">
+  <title>Колонки</title>
+  <style>
+   .column {
+    -webkit-column-width: 200px;
+    -moz-column-width: 200px;
+    column-width: 200px;
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+    -webkit-column-gap: 30px;
+    -moz-column-gap: 30px;
+    column-gap: 30px;
+    -webkit-column-rule: 1px solid #ccc;
+    -moz-column-rule: 1px solid #ccc;
+    column-rule: 1px solid #ccc;
+   }
+  </style>
+ </head>
+ <body>
+  <div class="column">
+   <p><pre>
+function min (a, b) &#123
+  if (a&#60b) return a;
+  else return b;
+  &#125 
+console.log(min(1,-20));</pre></p>
+   <p>Minimum <br>
+The previous chapter introduced the standard function Math.min that returns its smallest argument. We can do that ourselves now. Write a function min that takes two arguments and returns their minimum.</p>
+  </div>
+ </body>
 </html>

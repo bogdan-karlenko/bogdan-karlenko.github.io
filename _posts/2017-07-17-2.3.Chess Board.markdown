@@ -1,0 +1,41 @@
+---
+layout: post
+title:  "2.3.Chess Board"
+date:   2017-07-17 12:20:00 +0300
+categories: EJS Chapter 2 Exercise
+---
+> Chess board
+> ====
+> Write a program that creates a string that represents an 8?8 grid, using newline characters to separate lines. At each position of the grid there is either a space or a �#� character. The characters should form a chess board.
+> 
+> Passing this string to console.log should show something like this:
+> 
+> 
+> &nbsp;&nbsp;&nbsp;`` # # # #``  
+> ``# # # # ``  
+> &nbsp;&nbsp;&nbsp;`` # # # #``  
+> ``# # # # ``  
+> &nbsp;&nbsp;&nbsp;`` # # # #``  
+> ``# # # # ``  
+> &nbsp;&nbsp;&nbsp;`` # # # #``  
+> ``# # # # ``  
+> 
+> 
+> When you have a program that generates this pattern, define a variable size = 8 and change the program so that it works for any size, outputting a grid of the given width and height.
+> 
+> 
+
+
+My solution:
+====
+{% highlight javascript %}
+var size = 8;
+for (i=0; i<size/2; i++) {
+    var line = "";
+          for (j=0; j<size/2; j++)
+            if (i%2 == 0) 
+              line += " #";
+              else line += "# ";          
+  console.log(line);
+}
+{% endhighlight %}

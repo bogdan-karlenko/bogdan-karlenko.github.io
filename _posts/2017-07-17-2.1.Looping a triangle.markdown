@@ -1,0 +1,33 @@
+---
+layout: post
+title:  "2.1.Looping a triangle"
+date:   2017-07-17 11:22:03 +0300
+categories: EJS Chapter 2 Exercise
+---
+> Looping a triangle
+> ====
+> Write a loop that makes seven calls to console.log to output the following triangle:
+>
+>
+>``#``  
+>``##``  
+>``###``  
+>``####``  
+>``#####``  
+>``######``  
+>``#######``  
+>
+>
+>It may be useful to know that you can find the length of a string by writing .length after it.
+>
+>  
+  
+My solution:
+====
+{% highlight javascript %}
+var str = ""
+while (str.length<7) {
+    str += "#"
+    console.log(str)
+}
+{% endhighlight %}
