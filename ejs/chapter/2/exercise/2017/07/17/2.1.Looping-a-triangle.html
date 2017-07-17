@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>EJS Exercises</title>
-  <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search resu...">
+  <title>2.1.Looping a triangle</title>
+  <meta name="description" content="Looping a triangle Write a loop that makes seven calls to console.log to output the following triangle: # ## ### #### ##### ###### ####### It may be useful t...">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="/404.html">
+  <link rel="canonical" href="/ejs/chapter/2/exercise/2017/07/17/2.1.Looping-a-triangle.html">
   <link rel="alternate" type="application/rss+xml" title="EJS Exercises" href="/feed.xml">
   
   
@@ -67,26 +67,48 @@
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <style type="text/css" media="screen">
-  .container {
-    margin: 10px auto;
-    max-width: 600px;
-    text-align: center;
-  }
-  h1 {
-    margin: 30px 0;
-    font-size: 4em;
-    line-height: 1;
-    letter-spacing: -1px;
-  }
-</style>
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-<div class="container">
-  <h1>404</h1>
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">2.1.Looping a triangle</h1>
+    <p class="post-meta">
+      <time datetime="2017-07-17T11:22:03+03:00" itemprop="datePublished">
+        
+        Jul 17, 2017
+      </time>
+      </p>
+  </header>
 
-  <p><strong>Page not found :(</strong></p>
-  <p>The requested page could not be found.</p>
-</div>
+  <div class="post-content" itemprop="articleBody">
+    <blockquote>
+  <h1 id="looping-a-triangle">Looping a triangle</h1>
+  <p>Write a loop that makes seven calls to console.log to output the following triangle:</p>
+
+  <p><code class="highlighter-rouge">#</code><br />
+<code class="highlighter-rouge">##</code><br />
+<code class="highlighter-rouge">###</code><br />
+<code class="highlighter-rouge">####</code><br />
+<code class="highlighter-rouge">#####</code><br />
+<code class="highlighter-rouge">######</code><br />
+<code class="highlighter-rouge">#######</code></p>
+
+  <p>It may be useful to know that you can find the length of a string by writing .length after it.</p>
+
+</blockquote>
+
+<h1 id="my-solution">My solution:</h1>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">str</span> <span class="o">=</span> <span class="s2">""</span>
+<span class="k">while</span> <span class="p">(</span><span class="nx">str</span><span class="p">.</span><span class="nx">length</span><span class="o">&lt;</span><span class="mi">7</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">str</span> <span class="o">+=</span> <span class="s2">"#"</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">str</span><span class="p">)</span>
+<span class="p">}</span></code></pre></figure>
+
+
+  </div>
+
+  
+</article>
 
       </div>
     </main>
