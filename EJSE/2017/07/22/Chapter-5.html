@@ -129,6 +129,82 @@
 
 <span class="c1">// → 31.2</span></code></pre></figure>
 
+<blockquote>
+
+  <h1 id="53-historical-life-expectancy">5.3. Historical life expectancy</h1>
+  <p>When we looked up all the people in our data set that lived more than 90 years, only the latest generation in the data came out. Let’s take a closer look at that phenomenon.</p>
+
+  <p>Compute and output the average age of the people in the ancestry data set per century. A person is assigned to a century by taking their year of death, dividing it by 100, and rounding it up, as in Math.ceil(person.died / 100).</p>
+
+</blockquote>
+
+<h1 id="my-solution-2">My solution:</h1>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">average</span><span class="p">(</span><span class="nx">array</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">function</span> <span class="nx">plus</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span> <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">array</span><span class="p">.</span><span class="nx">reduce</span><span class="p">(</span><span class="nx">plus</span><span class="p">)</span> <span class="o">/</span> <span class="nx">array</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">ancestry</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">person</span><span class="p">){</span>
+ <span class="k">return</span> <span class="nx">person</span><span class="p">.</span><span class="nx">century</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">ceil</span><span class="p">(</span><span class="nx">person</span><span class="p">.</span><span class="nx">died</span> <span class="o">/</span> <span class="mi">100</span><span class="p">),</span>
+ <span class="nx">person</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="nx">person</span><span class="p">.</span><span class="nx">died</span> <span class="o">-</span> <span class="nx">person</span><span class="p">.</span><span class="nx">born</span><span class="p">;</span>
+<span class="p">});</span>
+
+<span class="kd">var</span> <span class="nx">allCenturies</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="nx">ancestry</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">person</span><span class="p">)</span> <span class="p">{</span>
+  
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="nx">person</span><span class="p">.</span><span class="nx">century</span> <span class="k">in</span> <span class="nx">allCenturies</span><span class="p">))</span>
+  <span class="p">{</span>
+    <span class="nx">allCenturies</span><span class="p">[</span><span class="nx">person</span><span class="p">.</span><span class="nx">century</span><span class="p">]</span><span class="o">=</span><span class="p">[</span><span class="nx">person</span><span class="p">.</span><span class="nx">age</span><span class="p">]</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="nx">allCenturies</span><span class="p">[</span><span class="nx">person</span><span class="p">.</span><span class="nx">century</span><span class="p">].</span><span class="nx">push</span><span class="p">(</span><span class="nx">person</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="nx">century</span> <span class="k">in</span> <span class="nx">allCenturies</span><span class="p">)</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">century</span> <span class="o">+</span> <span class="s2">": "</span> <span class="o">+</span> <span class="nx">average</span><span class="p">(</span><span class="nx">allCenturies</span><span class="p">[</span><span class="nx">century</span><span class="p">]));</span>
+
+<span class="c1">// → 16: 43.5</span>
+<span class="c1">//   17: 51.2</span>
+<span class="c1">//   18: 52.8</span>
+<span class="c1">//   19: 54.8</span>
+<span class="c1">//   20: 84.7</span>
+<span class="c1">//   21: 94</span></code></pre></figure>
+
+<blockquote>
+
+  <h1 id="54-every-and-then-some">5.4. Every and then some</h1>
+  <p>Arrays also come with the standard methods every and some. Both take a predicate function that, when called with an array element as argument, returns true or false. Just like &amp;&amp; returns a true value only when the expressions on both sides are true, every returns true only when the predicate returns true for all elements of the array. Similarly, some returns true as soon as the predicate returns true for any of the elements. They do not process more elements than necessary—for example, if some finds that the predicate holds for the first element of the array, it will not look at the values after that.</p>
+
+  <p>Write two functions, every and some, that behave like these methods, except that they take the array as their first argument rather than being a method.</p>
+
+</blockquote>
+
+<h1 id="my-solution-3">My solution:</h1>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">every</span> <span class="p">(</span><span class="nx">array</span><span class="p">,</span> <span class="nx">test</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">cnt</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+  <span class="nx">array</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">element</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">cnt</span> <span class="o">+=</span> <span class="nx">test</span><span class="p">(</span><span class="nx">element</span><span class="p">);</span>
+  <span class="p">})</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">cnt</span><span class="o">==</span><span class="nx">array</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+  <span class="k">else</span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">some</span> <span class="p">(</span><span class="nx">array</span><span class="p">,</span> <span class="nx">test</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="nx">array</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">test</span><span class="p">(</span><span class="nx">array</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span> <span class="o">==</span> <span class="kc">true</span><span class="p">)</span> <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+  <span class="p">};</span>
+  <span class="k">return</span> <span class="kc">false</span><span class="p">;</span> 
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">every</span><span class="p">([</span><span class="kc">NaN</span><span class="p">,</span> <span class="kc">NaN</span><span class="p">,</span> <span class="kc">NaN</span><span class="p">],</span> <span class="nb">isNaN</span><span class="p">));</span>
+<span class="c1">// → true</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">every</span><span class="p">([</span><span class="kc">NaN</span><span class="p">,</span> <span class="kc">NaN</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="nb">isNaN</span><span class="p">));</span>
+<span class="c1">// → false</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">some</span><span class="p">([</span><span class="kc">NaN</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="nb">isNaN</span><span class="p">));</span>
+<span class="c1">// → true</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">some</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="nb">isNaN</span><span class="p">));</span>
+<span class="c1">// → false</span></code></pre></figure>
+
   </div>
 
   
